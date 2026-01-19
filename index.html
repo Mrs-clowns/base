@@ -211,19 +211,35 @@ const cta = document.getElementById('cta');
   if (supportsWhatsappProtocol()) {
     btn.href = waSchemeUrl;
 
-    // fallback：如果 800ms 内没有跳走，自动降级
-    btn.addEventListener("click", function () {
-      const fallbackTimer = setTimeout(function () {
-        window.location.href = waMeUrl;
-      }, 800);
+    btn.addEventListener("click", function (e) {
+    e.preventDefault();
 
-      window.addEventListener("blur", function () {
-        clearTimeout(fallbackTimer);
-      });
-    });
-  } else {
-    btn.href = waMeUrl;
-  }
+    let appOpened = false;
+
+    const onVisibilityChange = function () {
+      if (document.hidden) {
+        appOpened = true;
+        cleanup();
+      }
+    };
+
+    function cleanup() {
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    }
+
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    // 尝试唤起 WhatsApp
+    window.location.href = waSchemeUrl;
+
+    // 兜底：如果 1.2 秒后页面仍可见 → 没装 WhatsApp
+    setTimeout(function () {
+      if (!appOpened && !document.hidden) {
+        cleanup();
+        window.location.href = waMeUrl;
+      }
+    }, 1200);
+  });
 })();
 </script>
 </body>
