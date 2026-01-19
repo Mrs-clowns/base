@@ -120,6 +120,16 @@ body {
     width: 100%;
     display: block;
   }
+    .container {
+    max-width: 480px;   /* 控制手机视觉宽度 */
+    margin: 0 auto;
+  }
+
+  .responsive-img {
+    width: 100%;
+    height: auto;
+    display: block;     /* 防止图片底部出现白边 */
+  }
   </style>
 </head>
 
@@ -128,8 +138,8 @@ body {
 
 <!-- End Google Tag Manager (noscript) -->
   <div class="container">
-    <img id= "2" src="https://i.ibb.co/21VBg4B9/20260119234418-204-25.png" alt="123"  border="0">
-    <img id= "1" src="https://i.ibb.co/k60q8Hkp/20260119234418-205-25.png" alt="123"  border="0">
+    <img id= "2" src="https://i.ibb.co/21VBg4B9/20260119234418-204-25.png" alt="123" class="responsive-img"  border="0">
+    <img id= "1" src="https://i.ibb.co/k60q8Hkp/20260119234418-205-25.png" alt="123" class="responsive-img"  border="0">
     <!-- HERO -->
     
     </div>
