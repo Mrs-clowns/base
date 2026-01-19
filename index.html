@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
   <title>Premium Custom-made</title>
 <!-- TikTok Pixel Code Start -->
 <!-- TikTok Pixel Code Start -->
@@ -16,6 +19,23 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   ttq.load('D5N1FK3C77U3FFO953EG');
   ttq.page();
 }(window, document, 'ttq');
+</script>
+  <script>
+  // 禁用缓存请求
+  if (performance && performance.navigation) {
+    if (performance.navigation.type === 1) { // 页面刷新
+      console.log("Page reloaded, bypassing cache");
+    }
+  }
+
+  // 避免浏览器缓存资源
+  const noCacheUrl = (url) => url + "?_=" + new Date().getTime();
+
+  // 替换页面资源引用示例
+  document.querySelectorAll('link[rel="stylesheet"], script[src]').forEach(el => {
+    if (el.tagName === 'LINK') el.href = noCacheUrl(el.href);
+    if (el.tagName === 'SCRIPT') el.src = noCacheUrl(el.src);
+  });
 </script>
 <!-- TikTok Pixel Code End -->
 
